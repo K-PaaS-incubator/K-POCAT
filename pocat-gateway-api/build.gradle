@@ -1,0 +1,6 @@
+apply plugin: 'java'
+
+dependencies {
+    // https://mvnrepository.com/artifact/io.netty/netty-common
+    implementation group: 'io.netty', name: 'netty-all', version: '4.1.106.Final'
+}

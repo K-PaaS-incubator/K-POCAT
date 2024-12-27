@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  ~ Copyright 2024. dongobi soft inc.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<deploys>
+    <deploy>
+        <name>sampleDeploy</name>
+        <service-name>sample</service-name>
+        <service-class>io.pocat.service.SampleService</service-class>
+        <max-worker>256</max-worker>
+        <access-log>
+            <handler>
+                <type>file</type>
+                <args>
+
+                </args>
+            </handler>
+
+        </access-log>
+        <listener>
+            <consumer-group tap="false">
+                <name>deployName</name>
+                <channels>
+                    <channel name="alpha:test1"/>
+                    <channel name="alpha:test2"/>
+                </channels>
+            </consumer-group>
+            <consumer-group>
+                <name>${container:id}</name>
+                <channels>
+                    <channel name="beta:${container:id}"/>
+                </channels>
+            </consumer-group>
+        </listener>
+
+        <init-params>
+            <init-param name="greeting" value="Hi"/>
+            <init-param name="name" value="SampleService"/>
+        </init-params>
+
+        <resources>
+            <resource ref-name="a" resource-name="ab"/>
+            <resource ref-name="b" resource-name="bb"/>
+            <channel ref-name="user.channel" channel-name="alpha:publish.${container:id}"/>
+        </resources>
+    </deploy>
+</deploys>

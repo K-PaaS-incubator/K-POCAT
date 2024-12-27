@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  ~ Copyright 2024. dongobi soft inc.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<context>
+    <endpoints>
+        <endpoint>
+            <name>rabbit01</name>
+            <type>rabbitmq</type>
+            <properties>
+                <property name="rabbitmq.host" value="rabbitmq01"/>
+                <property name="rabbitmq.port" value="5672"/>
+                <property name="rabbitmq.username" value="guest"/>
+                <property name="rabbitmq.password" value="guest"/>
+            </properties>
+        </endpoint>
+        <endpoint>
+            <name>rabbit02</name>
+            <type>rabbitmq</type>
+            <properties>
+                <property name="rabbitmq.host" value="rabbitmq01"/>
+                <property name="rabbitmq.username" value="guest"/>
+                <property name="rabbitmq.password" value="guest"/>
+                <property name="rabbitmq.vhost" value="platform"/>
+            </properties>
+        </endpoint>
+    </endpoints>
+    <namespaces>
+        <namespace>
+            <name>alpha</name>
+            <endpoint-ref>rabbit01</endpoint-ref>
+            <properties>
+                <property name="rabbitmq.exchange" value="testExchange"/>
+            </properties>
+        </namespace>
+        <namespace>
+            <name>beta</name>
+            <endpoint>
+                <name>rabbit03</name>
+                <type>rabbitmq</type>
+                <properties>
+                    <property name="rabbitmq.host" value="rabbitmq01"/>
+                    <property name="rabbitmq.username" value="guest"/>
+                    <property name="rabbitmq.password" value="guest"/>
+                    <property name="rabbitmq.vhost" value="platform"/>
+                </properties>
+            </endpoint>
+            <properties>
+                <property name="rabbitmq.exchange" value="testExchange"/>
+            </properties>
+        </namespace>
+    </namespaces>
+    <resources>
+        <resource>
+            <type>mongodb</type>
+            <name>mongo/mongo01</name>
+            <properties>
+                <property name="url" value="mongo://mongo01:27017/test2"/>
+            </properties>
+        </resource>
+
+        <resource>
+            <type>mongodb</type>
+            <name>mongo/mongo02</name>
+            <properties>
+                <property name="url" value="mongo://mongo01:27017/testdb"/>
+            </properties>
+        </resource>
+    </resources>
+</context>

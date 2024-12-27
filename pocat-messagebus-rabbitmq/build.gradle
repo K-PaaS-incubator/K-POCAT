@@ -1,0 +1,9 @@
+apply plugin:'java'
+
+dependencies {
+    implementation project(':pocat-messagebus')
+
+    // https://mvnrepository.com/artifact/com.rabbitmq/amqp-client
+    implementation group: 'com.rabbitmq', name: 'amqp-client', version: '5.21.0'
+
+}

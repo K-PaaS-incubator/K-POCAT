@@ -1,0 +1,9 @@
+apply plugin: 'java'
+
+dependencies {
+    implementation project(':pocat-service')
+}
+
+archivesBaseName = 'service-sample'
+group = 'io.pocat'
+version = ''

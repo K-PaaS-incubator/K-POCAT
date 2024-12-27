@@ -1,0 +1,15 @@
+apply plugin:'java'
+
+sourceSets {
+    main {
+        java {
+            srcDir 'pocat-context-common/src/main/java'
+        }
+    }
+}
+
+dependencies {
+    implementation project(':pocat-env-context')
+    implementation project(':pocat-resources')
+    implementation project(':pocat-messagebus')
+}

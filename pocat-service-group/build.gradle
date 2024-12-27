@@ -1,0 +1,9 @@
+apply plugin:'java'
+
+dependencies {
+    implementation project(':pocat-env-context')
+    implementation project(':pocat-messagebus')
+    implementation project(':pocat-resources')
+    implementation project(':pocat-common')
+    implementation project(':pocat-service')
+}

@@ -1,0 +1,15 @@
+apply plugin:'java'
+
+dependencies {
+    implementation project(':pocat-env-context')
+    implementation project(':pocat-messagebus')
+    implementation project(':pocat-resources')
+    implementation project(':pocat-common')
+    implementation project(':pocat-gateway-api')
+
+    // https://mvnrepository.com/artifact/io.netty/netty-common
+    implementation group: 'io.netty', name: 'netty-all', version: '4.1.106.Final'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
+
+}
